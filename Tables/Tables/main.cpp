@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "rus"); // корректное отображение Кириллицы
 	ofstream fout("TestText.txt"); // создаём объект класса ofstream для записи и связываем его с файлом cppstudio.txt
-	fout << "Супер пупер длинный текст который нам даст СА"; // запись строки в файл
+	fout << "текст"; // запись строки в файл
 	fout.close(); // закрываем файл
 
 

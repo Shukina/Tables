@@ -61,7 +61,8 @@ private:
 	void Delete(BSTNode* r, string key) 
 	{
 
-		if (key < r->GetName()) {
+		if (key < r->GetName())
+		{
 			if (r->GetLeft()->GetName() == key)
 			{
 				r->SetLeft(Merge(r->GetLeft()->GetLeft(), r->GetLeft()->GetRight()));
@@ -84,8 +85,7 @@ private:
 		}
 	}
 
-
-	void BST::Insert(BSTNode* r, BSTNode* new_node) 
+	void Insert(BSTNode* r, BSTNode* new_node) 
 	{
 		if (new_node->GetName() > r->GetName()) 
 		{
@@ -110,9 +110,21 @@ private:
 			return;
 		}
 	}
-public:
-	
 
+	void DeleteALL(BSTNode* node) //??
+	{
+		if (node->GetMiddle() == NULL)
+		{
+			return;
+		}
+		if (node->GetLeft != NULL)
+			DeleteALL(node->GetLeft);
+		if (node->GetRight != NULL)
+			DeleteALL(node->GetRight);
+		if (node->GetLeft == NULL && node->GetRight == NULL)
+			node->SetMiddle(NULL);
+	}
+public:
 	void Insert(Record* node)
 	{
 		if (root->GetMiddle == NULL)
@@ -144,6 +156,8 @@ public:
 		Delete(root, key);
 	}
 
+	
+
 	Record* Search(string key) {
 		BSTNode* res = Search(root, key);
 		if (res == NULL)
@@ -153,6 +167,11 @@ public:
 		return res->GetMiddle();
 	}
 
+	~BST()
+	{
+		DeleteALL(root);
+		root = NULL;
+	}
 
 
 

@@ -25,14 +25,23 @@ private:
 
 public:
 	HashTable()
+	{
+		max_size = 10;
+		table = new list<Record>*[max_size];
+		for (int i = 0; i < max_size; i++)
 		{
-			max_size = 10;
-			table = new list<Record>*[max_size];
-			for (int i = 0; i < max_size; i++)
-			{
-				table[i] = new list < Record>;
-			}
+			table[i] = new list < Record>;
 		}
+	}
+
+	~HashTable()
+	{
+		for (int i = 0; i < max_size; i++)
+		{
+			delete [] table[i];
+		}
+		delete [] table;
+	}
 
 	void Insert(string key, int p)
 	{

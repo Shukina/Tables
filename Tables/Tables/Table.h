@@ -13,34 +13,11 @@ using namespace std;
 
 class Table {
 protected:
-	int DataCount;//количество записей
+	virtual int Find(string word) = 0;
 public:
-	Table()
-	{
-		DataCount = 0;
-	}
-
-	~Table() {}
-
-	int GetDataCount() const 
-	{ 
-		return DataCount; 
-	}
-
-
-	int isEmpty() //проверка на пустоту
-	{ 
-		return DataCount == 0;
-	}
-
-	virtual int IsFull() = 0; //проверка на полноту
-	virtual int Find(TKey _key) = 0; //найти запись 
-	virtual void Delete(TKey _key) = 0; //удалить запись
-	virtual void Insert(Record rec) = 0;//вставить запись
-	virtual void Reset() = 0; //вернуться в начало
-	virtual void GoNext() = 0; //перейти к следующей записи
-	virtual int IsEnd() = 0; //таблица завершена?
-	virtual Record GetCurr() = 0; 
+	virtual void Insert(string word, int p) = 0;
+	virtual void Delete(string word) = 0;
+	virtual int GetNode(string key) = 0;
 
 	
 	/*
