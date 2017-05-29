@@ -100,6 +100,7 @@ private:
 				return;
 			}
 		}
+		//если new_node->GetName() < r->GetName()
 		if (r->GetLeft() != NULL) 
 		{
 			Insert(r->GetLeft(), new_node);
@@ -113,16 +114,16 @@ private:
 
 	void DeleteALL(BSTNode* node) //??
 	{
-		if (node->GetMiddle() == NULL)
+		if (node == NULL)
 		{
 			return;
 		}
-		if (node->GetLeft != NULL)
-			DeleteALL(node->GetLeft);
-		if (node->GetRight != NULL)
-			DeleteALL(node->GetRight);
-		if (node->GetLeft == NULL && node->GetRight == NULL)
-			node->SetMiddle(NULL);
+		if (node->GetLeft() != NULL)
+			DeleteALL(node->GetLeft());
+		if (node->GetRight() != NULL)
+			DeleteALL(node->GetRight());
+		//if (node->GetLeft()== NULL && node->GetRight() == NULL)
+			delete[] node;
 	}
 public:
 	void Insert(Record* node)

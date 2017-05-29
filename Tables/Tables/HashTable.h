@@ -8,7 +8,7 @@
 class HashTable : public Table
 {
 private:
-	list<Record> **table; //	СПИСОК СПИСКОВ (массив, в котором указатели на списки, но массив большой)
+	list<Record> *table; //	массив списка (массив, в котором указатели на списки, но массив большой)
 	int max_size;   // максимальная длина списка указтелей
 
 	int hashfunc(string str)//получение номера размещения
@@ -21,25 +21,15 @@ private:
 		return (temp % max_size);
 	}
 
-	//int Find(string key) { return 0; };
-
 public:
 	HashTable()
 	{
 		max_size = 10;
-		table = new list<Record>*[max_size];
-		for (int i = 0; i < max_size; i++)
-		{
-			table[i] = new list < Record>;
-		}
+		table = new list<Record>[max_size];
 	}
 
 	~HashTable()
 	{
-		for (int i = 0; i < max_size; i++)
-		{
-			delete [] table[i];
-		}
 		delete [] table;
 	}
 

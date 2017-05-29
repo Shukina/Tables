@@ -66,6 +66,11 @@ public:
 		return middle->GetKey();
 	}
 
+	int GetCount() const
+	{
+		return middle->GetValue();
+	}
+
 	Record*  GetMiddle()
 	{
 		return middle;

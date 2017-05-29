@@ -12,6 +12,16 @@ private:
 	AVLNode* root;
 
 public:
+	AVLNode* GetRight()
+	{
+		return root->right;
+	}
+
+	AVLNode* GetLeft()
+	{
+		return root->left;
+	}
+
 	unsigned char GetHeight(AVLNode* p) // получение высоты вершины
 	{
 		if (p)
@@ -37,21 +47,21 @@ public:
 
 	AVLNode* rotateright(AVLNode* p) // правый поворот вокруг p
 	{
-		AVLNode* q = p->left;  // обменяем левого и правого сына
-		p->left = q->right;
-		q->right = p;
+		AVLNode* q = p->left;//запоминаем левого сына р 
+		p->left = q->right;//присваем левому сыну р узлы, которые мжду p и q
+		q->right = p;//присваиваем правому сыну q поддерево р
 		fixheight(p); //починим дерево
 		fixheight(q);
 		return q;
 	}
 
-	AVLNode* rotateleft(AVLNode* q) // левый поворот вокруг q
+	AVLNode* rotateleft(AVLNode* p) // левый поворот вокруг q
 	{
-		AVLNode* p = q->right; // обменяем правого и левого сына
-		q->right = p->left;
-		p->left = q;
+		AVLNode* q = p->right; //запоминаем правого сына р 
+		p->right = q->left;//присваем правому сыну р узлы, которые мжду p и q
+		q->left = p;//присваиваем левому сыну q поддерево р
+		fixheight(p); //починим дерево
 		fixheight(q);
-		fixheight(p);
 		return p;
 	}
 
@@ -120,5 +130,23 @@ public:
 		return balance(p); // мы ничего не нашли, балансируем дерево
 	}
 
+	void DeleteALL(AVLNode* node) //??
+	{
+		if (node == NULL)
+		{
+			return;
+		}
+		if (node->left!= NULL)
+			DeleteALL(node->left);
+		if (node->right != NULL)
+			DeleteALL(node->right);
+		//if (node->GetLeft()== NULL && node->GetRight() == NULL)
+		delete[] node;
+	}
+
+	~AVL()
+	{
+		DeleteALL(root);
+	}
 };
 #endif
