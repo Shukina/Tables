@@ -1,3 +1,7 @@
 ﻿  main.cpp
-  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Debug\Tables.exe
-  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Debug\Tables.pdb (Full PDB)
+d:\visual studio 2015\tables\tables\tables\hashtable.h(92): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\visual studio 2015\tables\tables\tables\hashtable.h(105): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\visual studio 2015\tables\tables\tables\bst_tree.h(178): warning C4018: <=: несоответствие типов со знаком и без знака
+d:\visual studio 2015\tables\tables\tables\bst_tree.h(191): warning C4018: <=: несоответствие типов со знаком и без знака
+  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Tables\Debug\Tables.exe
+  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Tables\Debug\Tables.pdb (Full PDB)

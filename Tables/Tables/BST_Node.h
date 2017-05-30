@@ -1,4 +1,4 @@
-#4
+
 #ifndef _BSTNODE_H
 #define _BSTNODE_H
 
@@ -25,7 +25,6 @@ public:
 		right = NULL;
 	}
 
-	
 
 	BSTNode (BSTNode& temp)
 	{

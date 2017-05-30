@@ -1,0 +1,2 @@
+﻿  main_test.cpp
+d:\visual studio 2015\tables\tables\tables_test\main_test.cpp(1): fatal error C1083: Не удается открыть файл включение: gtest.h: No such file or directory

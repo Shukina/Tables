@@ -1,4 +1,4 @@
-//#1
+
 #ifndef _RECORD_H 
 #define _RECORD_H
 
@@ -23,7 +23,8 @@ public:
 		value = 0;
 	}
 
-	Record(Record& m) {
+	Record(Record& m) 
+	{
 		key = m.GetKey();
 		value = m.GetValue();
 	}

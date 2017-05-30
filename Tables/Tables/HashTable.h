@@ -1,4 +1,4 @@
-#3
+
 #ifndef _HASHTABLE_H
 #define _HASHTABLE_H
 
@@ -15,9 +15,9 @@ private:
 	int hashfunc(string str)//получение номера размещения
 	{
 		int temp = 0;
-		for (int i = 0; i < str.size(); i++)
+		for (int i = 0; i < (int)str.size(); i++)
 		{
-			temp += str[i]*exp(i*log(10));
+			temp += (int)(str[i]*exp(i*log(10)));
 		}
 		return (temp % max_size);
 	}
@@ -28,16 +28,21 @@ public:
 		max_size = 10;
 		table = new list<Record>[max_size];
 	}
+	HashTable(int _size)
+	{
+		max_size = _size;
+		table = new list<Record>[max_size];
+	}
 
 	~HashTable()
 	{
 		delete [] table;
 	}
 
-	void Insert(string key, int p)
+	void Insert(Record p)
 	{
-		int hash_rec = hashfunc(key);
-		table[hash_rec].push_back(Record(key, p));
+		int hash_rec = hashfunc(p.GetKey() );
+		table[hash_rec].push_back(Record( p));
 	}
 
 	void Delete(string key)
@@ -56,6 +61,61 @@ public:
 				return iterator->GetValue();
 		}
 		return NULL;
+	}
+
+	void Print()
+	{
+		Record temp;
+		for (int i = 0; i < max_size; i++)
+		{
+			while (table[i].size())
+			{
+				temp = table[i].front();
+				cout << i << ") hash = " << hashfunc(temp.GetKey() ) << " key = " << temp.GetKey() << " data = " << temp.GetValue() << '\n';
+			}
+		}
+	}
+
+	void Read(char* pFileName)
+	{
+		string str = "";
+		ifstream TxtFile(pFileName);
+
+		if (!TxtFile.fail())
+		{
+			while (!TxtFile.eof())
+				str += TxtFile.get();
+			TxtFile.close();
+		}
+		else cout << "File does not exist" << endl;
+
+		for (int i = 0; i <= str.length(); i++)
+		{
+			char tmp = str[i];
+			if (((int)tmp >= 65) && ((int)tmp <= 90))
+			{
+				tmp += 32;
+			}
+			str[i] = tmp;
+		}
+
+		string tmp = "";
+		Record rec;
+
+		for (int i = 0; i <= str.length(); i++)
+		{
+			if (str[i] == ' ')
+			{
+				rec.key = tmp;
+				rec.value = 1;
+				Insert(rec);
+				tmp = "";
+			}
+			else
+			{
+				tmp += str[i];
+			}
+		}
 	}
 };
 

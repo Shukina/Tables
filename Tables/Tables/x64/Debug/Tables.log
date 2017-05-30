@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\visual studio 2015\tables\tables\tables\hashtable.h(20): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Tables\x64\Debug\Tables.exe
+  Tables.vcxproj -> D:\Visual Studio 2015\Tables\Tables\x64\Debug\Tables.pdb (Full PDB)

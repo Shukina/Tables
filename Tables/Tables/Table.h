@@ -13,11 +13,11 @@ using namespace std;
 
 class Table {
 protected:
-	virtual int Find(string word) = 0;
+	/*virtual int Find(string word) = 0;*/
 public:
-	virtual void Insert(string word, int p) = 0;
-	virtual void Delete(string word) = 0;
-	virtual int GetNode(string key) = 0;
+	//virtual void Insert(string word, int p) = 0;
+	//virtual void Delete(string word) = 0;
+	//virtual int GetNode(string key) = 0;
 
 	
 	/*
@@ -26,16 +26,17 @@ public:
 		{
 			cout << GetCurr().key << "  -  " << GetCurr().value << endl;
 		}
-	}
+	}*/
 
-	void Read(char* pFileName)
+	/*oid Read(char* pFileName)
 	{
 		string str = "";
 		ifstream TxtFile(pFileName);
 
 		if (!TxtFile.fail())
 		{
-			while (!TxtFile.eof()) str += TxtFile.get();
+			while (!TxtFile.eof()) 
+				str += TxtFile.get();
 			TxtFile.close();
 		}
 		else cout << "File does not exist" << endl;
@@ -68,6 +69,7 @@ public:
 			}
 		}
 	}*/
+	;
 };
 #endif// !_TABLE_H
 

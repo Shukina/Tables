@@ -1,8 +1,9 @@
-#5
+
 #ifndef _BSTTREE_H
 #define _BSTTREE_H
 
 #include <iostream>
+#include <queue>
 #include "Table.h"
 #include "BST_Node.h"
 
@@ -95,13 +96,20 @@ private:
 			delete[] node;
 	}
 public:
-	void Insert(Record* node)
+	BST()
 	{
-		if (root->GetMiddle == NULL)
-			root->SetMiddle(node);
+		root = NULL;
+	}
 
-		BSTNode* temp = new BSTNode(node);
-		Insert(root, temp);
+	void Insert(Record node)
+	{
+		if (root->GetMiddle()==NULL )
+			root->SetMiddle(&node);
+		else
+		{
+			BSTNode* temp = new BSTNode(&node);
+			Insert(root, temp);
+		}
 	}
 
 	void Delete(string key)//удаление записи с ключом key
@@ -136,7 +144,65 @@ public:
 		root = NULL;
 	}
 
+	void Print()
+	{
+		queue<BSTNode*> q;
+		if (root)
+			q.push(root);
+		while (!q.empty())
+		{
+			BSTNode *tmp = q.front();
+			cout << tmp->GetMiddle()->GetKey() << ' ' << tmp->GetMiddle()->GetValue() << '\n';
+			if (tmp->GetLeft())
+				q.push(tmp->GetLeft());
+			if (tmp->GetRight())
+				q.push(tmp->GetRight());
+			q.pop();
+		}
+	}
 
+
+	void Read(char* pFileName)
+	{
+		string str = "";
+		ifstream TxtFile(pFileName);
+
+		if (!TxtFile.fail())
+		{
+			while (!TxtFile.eof())
+				str += TxtFile.get();
+			TxtFile.close();
+		}
+		else cout << "File does not exist" << endl;
+
+		for (int i = 0; i <= str.length(); i++)
+		{
+			char tmp = str[i];
+			if (((int)tmp >= 65) && ((int)tmp <= 90))
+			{
+				tmp += 32;
+			}
+			str[i] = tmp;
+		}
+
+		string tmp = "";
+		Record rec;
+
+		for (int i = 0; i <= str.length(); i++)
+		{
+			if (str[i] == ' ')
+			{
+				rec.key = tmp;
+				rec.value = 1;
+				Insert(rec);
+				tmp = "";
+			}
+			else
+			{
+				tmp += str[i];
+			}
+		}
+	}
 
 };
 
