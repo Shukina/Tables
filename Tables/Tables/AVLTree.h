@@ -22,7 +22,7 @@ public:
 		return root->left;
 	}
 
-	unsigned char GetHeight(AVLNode* p) // получение высоты вершины
+	unsigned int GetHeight(AVLNode* p) // получение высоты вершины
 	{
 		if (p)
 			return p->height;
@@ -37,8 +37,8 @@ public:
 
 	void fixheight(AVLNode* p) // обновим высоту, если сбалансированность нарушена
 	{
-		unsigned char hl = GetHeight(p->left); // высота левого сына
-		unsigned char hr = GetHeight(p->right); // высота правого сына
+		unsigned int hl = GetHeight(p->left); // высота левого сына
+		unsigned int hr = GetHeight(p->right); // высота правого сына
 		if (hl > hr)
 			p->height = hl + 1;
 		else

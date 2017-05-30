@@ -9,7 +9,7 @@ class AVLNode
 {
 public:
 	int key;   //ключ
-	unsigned char height; //высота поддерева в данной вершине
+	unsigned int height; //высота поддерева в данной вершине
 	AVLNode* left; //указатель на правый
 	AVLNode* right; //указатель на левый
 
